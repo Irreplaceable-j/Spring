@@ -12,7 +12,6 @@ public class Book {
     }
 
     public Book(String title, String author, String publisher, Integer page) {
-
         this.title = title;
         this.author = author;
         this.publisher = publisher;
