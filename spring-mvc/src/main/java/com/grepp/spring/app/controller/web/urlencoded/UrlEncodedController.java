@@ -2,9 +2,8 @@ package com.grepp.spring.app.controller.web.urlencoded;
 
 import com.grepp.spring.app.controller.web.urlencoded.form.UrlEncodedForm;
 import com.grepp.spring.app.controller.web.urlencoded.validator.UrlEncodedValidator;
+import com.grepp.spring.app.model.error.ErrorService;
 import com.grepp.spring.app.model.urlencoded.dto.UrlEncodedDto;
-import com.grepp.spring.infra.error.exceptions.WebException;
-import com.grepp.spring.infra.response.ResponseCode;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -12,8 +11,6 @@ import jakarta.validation.Valid;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,12 +32,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 // 4. @RequestParam : format 이 x-www-form-urlEncoded 인 요청파라미터를
 //                    Controller 의 매개변수에 매핑
 // 5. @ModelAttribute : 요청파라미터를 메서드의 매개변수에 선언한 Form 객체에 매핑
-//                    Model객체의 attribute에 Form 객체를 자동으로 추가
+//                    Model 객체의 attribute 에 Form 객체를 자동으로 추가
 @Controller
 @RequestMapping("form")
 @Slf4j
 @RequiredArgsConstructor
 public class UrlEncodedController {
+
+    private final ErrorService errorService;
 
     // SLF4J : Simple Logging Facade for Java
     // logging : TRACE > DEBUG > INFO > WARN > ERROR > FATAL
@@ -56,7 +55,7 @@ public class UrlEncodedController {
     // model 에 form 객체를 바인드 하는 시점에
     // 검증, 포멧팅 등의 작업을 수행
     @InitBinder("urlEncodedForm")
-    private void urlEncodedBinder(WebDataBinder binder) {
+    private void urlEncodedBinder(WebDataBinder binder){
         binder.addValidators(new UrlEncodedValidator());
     }
 
@@ -77,9 +76,9 @@ public class UrlEncodedController {
 
         log.info("model : {}", model);
         log.info("form : {}" , form);
-        log.info("bindingResult : {}", bindingResult);
+        log.info("bindingResult : {}" , bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "spring/form";
         }
 
@@ -129,7 +128,7 @@ public class UrlEncodedController {
         HttpSession session,
         RedirectAttributes redirectAttributes
     ){
-        redirectAttributes.addAttribute("attr", "welcome");
+        redirectAttributes.addAttribute("attr","welcome");
         session.setAttribute("principal", form);
         return "redirect:/form/session/result";
     }
@@ -152,12 +151,8 @@ public class UrlEncodedController {
 
     @GetMapping("error")
     public String error(){
-        throw new WebException(ResponseCode.BAD_REQUEST);
+        //throw new WebException(ResponseCode.BAD_REQUEST);
+        errorService.webException();
+        return null;
     }
-
-
-
-
-
-
 }
