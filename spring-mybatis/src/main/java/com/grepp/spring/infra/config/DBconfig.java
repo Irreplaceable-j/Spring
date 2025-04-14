@@ -46,7 +46,6 @@ public class DBconfig {
         config.setUsername(username);
         config.setPassword(password);
         config.setMaximumPoolSize(poolSize);
-
         return new HikariDataSource(config);
     }
 
