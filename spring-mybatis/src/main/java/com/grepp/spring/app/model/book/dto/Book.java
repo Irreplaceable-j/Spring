@@ -2,6 +2,7 @@ package com.grepp.spring.app.model.book.dto;
 
 import com.grepp.spring.app.model.book.code.Category;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,10 +15,11 @@ public class Book {
     private String title;
     private String author;
     private String info;
+    private List<BookImg> images;
     private String amount;
     private LocalDateTime createdAt;
     private Integer rentCnt;
-    private boolean activated;
+    private Boolean activated;
 
     public Book(Category category, String title, String author, String info) {
         this.category = category;
