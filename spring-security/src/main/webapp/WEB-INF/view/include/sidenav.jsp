@@ -6,7 +6,7 @@
             <div class="background">
                 <img src="${context}/assets/img/flower1.PNG">
             </div>
-            <a href="#user"><img class="circle" src="${context}/assets/img/flower1.PNG">"></a>
+            <a href="#user"><img class="circle" src="${context}/assets/img/flower1.PNG"></a>
             <a href="#name"><span class="white-text name">John Doe</span></a>
             <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
@@ -19,10 +19,9 @@
     <li><a class="subheader">Subheader</a></li>
     <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 </ul>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {edge:'right'});
+    const elems = document.querySelectorAll('.sidenav');
+    const instances = M.Sidenav.init(elems, {edge: 'right'});
   });
 </script>
