@@ -11,8 +11,6 @@
   <context:property-placeholder location="classpath:application.properties" />
   <mvc:resources mapping="/download/**" location="file:${upload.path}" />
 
-
-
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="prefix" value="/WEB-INF/view/"/>
     <property name="suffix" value=".jsp"/>

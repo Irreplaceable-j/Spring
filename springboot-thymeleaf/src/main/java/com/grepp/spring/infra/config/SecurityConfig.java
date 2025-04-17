@@ -61,7 +61,17 @@ public class SecurityConfig {
                 response.sendRedirect("/");
             }
         };
+    }
 
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(
+                (requests) -> requests
+                    .anyRequest().permitAll()
+            )
+            .logout(LogoutConfigurer::permitAll);
+        return http.build();
     }
 
     @Bean
