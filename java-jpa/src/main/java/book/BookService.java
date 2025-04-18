@@ -13,8 +13,7 @@ public class BookService {
         EntityTransaction tx = em.getTransaction();
 
         try{
-//            tx.begin()
-
+            tx.begin();
             em.persist(book);
             tx.commit();
         }catch(Exception e){
