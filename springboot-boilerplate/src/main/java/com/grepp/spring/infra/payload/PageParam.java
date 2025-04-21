@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class PageParam{
+
     @Min(1)
     private int page = 1;
     @Min(1)
