@@ -1,13 +1,11 @@
-package com.grepp.spring.app.model.rent.dto;
+package com.grepp.spring.app.model.rent.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import java.time.LocalDateTime;
 import java.util.List;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
