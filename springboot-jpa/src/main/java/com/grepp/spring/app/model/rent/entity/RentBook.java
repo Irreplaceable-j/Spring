@@ -1,4 +1,4 @@
-package com.grepp.spring.app.model.rent.dto;
+package com.grepp.spring.app.model.rent.entity;
 
 import com.grepp.spring.app.model.rent.code.RentState;
 import com.grepp.spring.infra.entity.BaseEntity;
