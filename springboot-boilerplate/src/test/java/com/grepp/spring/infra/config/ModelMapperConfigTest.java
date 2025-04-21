@@ -27,8 +27,7 @@ class ModelMapperConfigTest {
         assertEquals(order.getBillingAddress().getStreet(), dto.getBillingStreet());
         assertEquals(order.getBillingAddress().getCity(), dto.getBillingCity());
     }
-    
-    
+
     @AllArgsConstructor
     @Data
     static class Order {
