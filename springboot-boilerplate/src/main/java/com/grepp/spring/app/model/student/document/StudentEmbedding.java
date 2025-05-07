@@ -8,9 +8,11 @@ import dev.langchain4j.model.embedding.EmbeddingModel;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Document(collation = "students")
 public class StudentEmbedding {
@@ -29,7 +31,6 @@ public class StudentEmbedding {
         this.name = entity.getName();
         this.mbti = entity.getMbti();
         this.major = entity.getMajor();
-
         this.text = segment.text();
         this.embedding = embedding.vector();
     }
